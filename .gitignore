@@ -1,0 +1,38 @@
+﻿# Secrets and local environment configuration
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# JavaScript dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+.turbo/
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local databases and database exports
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Local editor and operating-system files
+.vscode/
+.DS_Store
+Thumbs.db
