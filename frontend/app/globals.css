@@ -1,0 +1,310 @@
+
+@import "tailwindcss";
+
+/*
+ * BURHĀN — VISUAL FOUNDATION
+ *
+ * Historical language:
+ * Baghdad · Andalusia · Maghreb
+ *
+ * Product language:
+ * Scholarly · Premium · Quiet · Interactive
+ */
+
+:root {
+  /* ─────────────────────────────────────────
+     Core materials
+     ───────────────────────────────────────── */
+
+  --ink-deep: #171512;
+  --ink: #24211d;
+  --ink-soft: #38332c;
+
+  --parchment: #f2ead8;
+  --parchment-light: #f7f1e4;
+  --parchment-deep: #e5d8bc;
+
+  /* ─────────────────────────────────────────
+     Historical accents
+     ───────────────────────────────────────── */
+
+  --lapis: #304d68;
+  --lapis-deep: #20384d;
+  --copper: #9a6847;
+  --copper-deep: #754b32;
+
+  --gold: #b89552;
+  --gold-soft: #cdb77d;
+  --burgundy: #633d3b;
+
+  /* ─────────────────────────────────────────
+     Interface semantics
+     ───────────────────────────────────────── */
+
+  --background: var(--ink-deep);
+  --foreground: var(--parchment-light);
+
+  --surface-dark: #1e1b18;
+  --surface-dark-raised: #28231e;
+  --border-dark: rgba(205, 183, 125, 0.16);
+
+  --text-primary: #f2ead8;
+  --text-secondary: #b9ae9b;
+  --text-muted: #81796d;
+
+  --border-light: rgba(36, 33, 29, 0.14);
+
+  /* ─────────────────────────────────────────
+     Typography
+     ───────────────────────────────────────── */
+
+  --font-display: var(--font-cormorant);
+  --font-arabic: var(--font-amiri);
+  --font-ui: var(--font-inter);
+
+  /* ─────────────────────────────────────────
+     Geometry
+     ───────────────────────────────────────── */
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* ─────────────────────────────────────────
+     Motion
+     ───────────────────────────────────────── */
+
+  --ease-burhan: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 320ms;
+  --duration-slow: 600ms;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-ink-deep: var(--ink-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+
+  --color-parchment: var(--parchment);
+  --color-parchment-light: var(--parchment-light);
+  --color-parchment-deep: var(--parchment-deep);
+
+  --color-lapis: var(--lapis);
+  --color-lapis-deep: var(--lapis-deep);
+
+  --color-copper: var(--copper);
+  --color-copper-deep: var(--copper-deep);
+
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+
+  --color-burgundy: var(--burgundy);
+
+  --font-display: var(--font-cormorant);
+  --font-arabic: var(--font-amiri);
+  --font-ui: var(--font-inter);
+}
+
+/* ─────────────────────────────────────────────
+   Base
+   ───────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(48, 77, 104, 0.12),
+      transparent 38%
+    ),
+    var(--background);
+
+  color: var(--foreground);
+
+  font-family: var(--font-ui), sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(184, 149, 82, 0.28);
+  color: var(--parchment-light);
+}
+
+/* ─────────────────────────────────────────────
+   Typography utilities
+   ───────────────────────────────────────────── */
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+.font-arabic {
+  font-family: var(--font-arabic), serif;
+}
+
+.font-ui {
+  font-family: var(--font-ui), sans-serif;
+}
+
+/* ─────────────────────────────────────────────
+   Manuscript material
+   ───────────────────────────────────────────── */
+
+.manuscript {
+  position: relative;
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.16),
+      transparent 32%
+    ),
+    var(--parchment);
+
+  color: var(--ink);
+}
+
+.manuscript::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  pointer-events: none;
+
+  opacity: 0.22;
+
+  background-image:
+    radial-gradient(
+      rgba(36, 33, 29, 0.18) 0.5px,
+      transparent 0.5px
+    );
+
+  background-size: 7px 7px;
+}
+
+/* ─────────────────────────────────────────────
+   Scholarly rule
+   ───────────────────────────────────────────── */
+
+.scholarly-rule {
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(184, 149, 82, 0.55),
+      transparent
+    );
+}
+
+/* ─────────────────────────────────────────────
+   Premium interaction baseline
+   ───────────────────────────────────────────── */
+
+.interactive {
+  transition:
+    color var(--duration-fast) var(--ease-burhan),
+    background-color var(--duration-fast) var(--ease-burhan),
+    border-color var(--duration-fast) var(--ease-burhan),
+    transform var(--duration-normal) var(--ease-burhan),
+    box-shadow var(--duration-normal) var(--ease-burhan);
+}
+
+.interactive:hover {
+  transform: translateY(-1px);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─────────────────────────────────────────────
+   Reduced motion
+   ───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ---------------------------------------------------------
+ * BURHĀN — RESEARCH EDITOR
+ * --------------------------------------------------------- */
+
+.burhan-editor {
+  outline: none;
+}
+
+.burhan-editor .ProseMirror {
+  min-height: 100%;
+  outline: none;
+}
+
+.burhan-editor .ProseMirror p {
+  margin: 0 0 1rem;
+}
+
+.burhan-editor .ProseMirror h2 {
+  margin: 1.5rem 0 0.75rem;
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.burhan-editor .ProseMirror strong {
+  font-weight: 700;
+}
+
+.burhan-editor .ProseMirror ul,
+.burhan-editor .ProseMirror ol {
+  margin: 0.75rem 0 1rem;
+  padding-left: 1.75rem;
+}
+
+.burhan-editor .ProseMirror ul {
+  list-style-type: disc;
+}
+
+.burhan-editor .ProseMirror ol {
+  list-style-type: decimal;
+}
+
+.burhan-editor .ProseMirror li {
+  padding-left: 0.25rem;
+  margin: 0.25rem 0;
+}
+
+.burhan-editor .ProseMirror li p {
+  margin: 0;
+}
